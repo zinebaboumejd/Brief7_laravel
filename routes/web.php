@@ -18,14 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/redirects',[HomeController::class,"index"]);
+ Route::get('/dashboard',[HomeController::class,"login"]);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
+ Route::get('/addticket','App\Http\Controllers\ticketController@newticket');
+ Route::get('/dashboard','App\Http\Controllers\ticketController@listticket');
